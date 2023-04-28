@@ -19,8 +19,9 @@ AutoGPT Deploy is a versatile program that simplifies the deployment of Auto-GPT
   - [Create \& Run the Docker Container 🏃](#create--run-the-docker-container-)
   - [Attach to the Docker Container 🖇️](#attach-to-the-docker-container-️)
   - [Remove the Docker Image and Container 🧹](#remove-the-docker-image-and-container-)
-- [Changelog 📜](#changelog-)
+- [CHANGELOG 📜](#changelog-)
   - [2023-04-28](#2023-04-28)
+  - [2023-04-29](#2023-04-29)
 - [TODO 📝](#todo-)
 - [Links 🔗](#links-)
 
@@ -108,12 +109,17 @@ or
 ./autogpt-deploy.sh --remove
 ```
 
-## Changelog 📜
+## CHANGELOG 📜
 
 ### 2023-04-28
 
 - Project started, researched, coded, and tested today.
 - README.md file created.
+
+### 2023-04-29
+
+- Removed all `create_new_script` functionality from the user-generated instances of `./autogpt-deploy.sh --generate`
+- Set the default case for user's custom generated scripts to call `--build` && `--create` instead of trying to call `create_new_script`
 
 ## TODO 📝
 

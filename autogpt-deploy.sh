@@ -55,7 +55,13 @@ function create_new_script {
     sed -e "s/autogpt-docker-image/${safe_project_name}/g" \
         -e "s/autogpt-docker-container/${safe_project_name}_container/g" \
         -e "s/APP_PORT=4000/APP_PORT=${port_number}/g" \
+        -e '/-g, --generate/d' \
+        -e '/create_new_script/,/^}/d' \
+        -e 's/.*-g, --generate.*//g' \
         >"$new_script_name"
+
+    echo -e '\nfunction reinvoke_build_and_create() {\n  script_name=$(basename "$0")\n  ./"$script_name" -b && ./"$script_name" -c\n}\n' >>"$new_script_name"
+    sed -i 's/create_new_script/reinvoke_build_and_create/g' "$new_script_name"
 
     chmod +x "$new_script_name"
     echo -e "\nNew shell script created: ${new_script_name}\n"
@@ -132,7 +138,7 @@ function cli_help {
     echo -e "Usage: ./boilerplate.sh\t{switch}\tOptions..."
     echo
     echo -e "\t-a, --attach\tAttach to this project's Docker Container."
-    echo -e "\t-b, --build\tBuild Docker Image as specified in the current folder (Dockerfile)."
+    echo -e "\t-b, --build\tBuild Docker Image as specified in the Dockerfile."
     echo -e "\t-c, --create\tCreate & Run the Docker Container in terminal."
     echo -e "\t-h, --help\tDisplay this help text."
     echo -e "\t-g, --generate\tGenerate a new unique version of this shell script."
