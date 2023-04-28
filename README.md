@@ -8,7 +8,7 @@
                                                           | |             __/ |
                                                           |_|            |___/ 
 ```
-AutoGPT Deploy is a versatile shell script and Dockerfile combination that simplifies the deployment of Auto-GPT. This tool automates the building, running, and management of your Autonomous GPT A.I. Agents.
+AutoGPT Deploy is a versatile program that simplifies the deployment of Auto-GPT. This tool automates the building, running, and management of your Autonomous GPT A.I. Agents.
 
 **Table of Contents 📑**
 - [Description 📖](#description-)
