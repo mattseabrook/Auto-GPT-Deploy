@@ -123,6 +123,8 @@ or
 - [ ] Support for piping `*.json` to stdin for configuration of the boilerplate shell script (*instead of answering questions old school style*)
 - [ ] Functionality for tthe user to be able to supply the Auto-GPT Prompts ahead of time.
 - [ ] Add support for docker alternatives, or no docker, and refactor the switches accordingly.
+- [ ] `ncat` service inside the container that will act like an REST API for the user to get Stats about Auto-GPT.
+- [ ] Dashboard and UI for Auto-GPT Instances?
 
 ## Links 🔗
 
