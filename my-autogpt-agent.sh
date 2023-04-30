@@ -1,8 +1,8 @@
 #!/bin/bash
 
 APP_PORT=4000
-DOCKER_IMAGE="test"
-DOCKER_CONTAINER="test_container"
+DOCKER_IMAGE="my-autogpt-agent"
+DOCKER_CONTAINER="my-autogpt-agent_container"
 
 #
 # Function to display cool ASCII text
