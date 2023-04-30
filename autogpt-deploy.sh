@@ -57,14 +57,17 @@ function create_new_script {
         -e "s/autogpt-docker-container/${safe_project_name}_container/g" \
         -e "s/APP_PORT=4000/APP_PORT=${port_number}/g" \
         -e '/-g, --generate/d' \
-        -e '/create_new_script/,/^}/d' \
         -e 's/.*-g, --generate.*//g' \
         "$new_script_name"
 
-    echo -e 'function reinvoke_build_and_create() {\n  script_name=$(basename "$0")\n  ./"$script_name" -b && ./"$script_name" -c\n}\n' >>"$new_script_name"
-    sed -i 's/create_new_script/reinvoke_build_and_create/g' "$new_script_name"
+    # Remove multiline comments and stray characters related to create_new_script
+    sed -i -e '/: '\''$/,/^'\''$/d' -e '/^\/\*/,/^================$/d' "$new_script_name"
 
-    sed -i -e '/: '\''$/,/^'\''$/d' -e '/^\/\*/,/^================$/d' "$new_script_name" # Remove multiline comments and stray characters
+    # Remove create_new_script function
+    sed -i -e '/^function create_new_script/,/^}$/d' "$new_script_name"
+
+    # Replace create_new_script with ./"$(basename "$0")" --build && ./"$(basename "$0")" --create
+    sed -i -e 's|create_new_script|./"$(basename "$0")" --build \&\& ./"$(basename "$0")" --create|g' "$new_script_name"
 
     chmod +x "$new_script_name"
     echo -e "\nNew shell script created: ${new_script_name}\n"

@@ -25,6 +25,7 @@ info@lakeshoretechnical.com
 EOF
 }
 
+
 function cli_interface {
     case $1 in
     # Attach to the Docker Container
@@ -59,6 +60,17 @@ function cli_interface {
         ;;
     # No arguments
     "")
+        ./"$(basename "$0")" --build && ./"$(basename "$0")" --create
+        ;;
+    *)
+        echo "ERROR: Invalid command line arguments/parameters: $@"
+        echo
+        echo "Usage: ./autogpt-deploy.sh {switch} {parameter}"
+        echo
+        cli_help
+        ;;
+    esac
+}
 
 function cli_help {
     echo
@@ -77,8 +89,3 @@ function cli_help {
 
 display_ascii
 cli_interface "$@"
-function reinvoke_build_and_create() {
-  script_name=$(basename "$0")
-  ./"$script_name" -b && ./"$script_name" -c
-}
-
