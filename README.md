@@ -139,3 +139,4 @@ Useful links for this project:
 - [Auto-GPT GitHub Repository](https://github.com/Significant-Gravitas/Auto-GPT)
 - [Setting up Auto-GPT](https://significant-gravitas.github.io/Auto-GPT/setup/)
 - [Getting Started with Auto-GPT for Beginners: Setup & Usage](https://bytexd.com/getting-started-with-auto-gpt-for-beginners-setup-usage/)
+- [docs/](https://github.com/Significant-Gravitas/Auto-GPT/tree/master/docs)

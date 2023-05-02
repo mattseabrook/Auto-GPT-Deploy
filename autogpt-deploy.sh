@@ -109,22 +109,24 @@ function cli_interface {
         ;;
     # Remove the Docker Image and Container
     -x | --remove)
+        display_ascii
+        # Place in some text explaining what is about to happen
         docker rm "$DOCKER_CONTAINER"
         docker rmi "$DOCKER_IMAGE"
         ;;
     # Help
     -h | --help)
+        display_ascii
         cli_help
         ;;
     # No arguments
     "")
+        display_ascii
         create_new_script
         ;;
     *)
+        display_ascii
         echo "ERROR: Invalid command line arguments/parameters: $@"
-        echo
-        echo "Usage: ./autogpt-deploy.sh {switch} {parameter}"
-        echo
         cli_help
         ;;
     esac
@@ -141,7 +143,7 @@ Print help related text on the screen like a standard CLI application
 '
 function cli_help {
     echo
-    echo -e "Usage: ./autogpt-deploy.sh\t{switch} {parameters...}"
+    echo -e "Usage: ./autogpt-deploy.sh {switch} {parameters...}"
     echo
     echo -e "\t-a, --attach\tAttach to this project's Docker Container."
     echo -e "\t-b, --build\tBuild Docker Image as specified in the Dockerfile."
@@ -166,5 +168,4 @@ Upon execution of the shell script
 */
 '
 
-display_ascii
 cli_interface "$@"
