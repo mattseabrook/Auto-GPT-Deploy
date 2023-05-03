@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Install required packages
 RUN apt-get update && \
     apt-get -y upgrade && \
-    apt-get install -y micro ncat curl git python3.10 pip redis tmux
+    apt-get install -y micro ncat curl git python3.10 libglib2.0-0 libnss3 pip redis tmux
 
 # Configure the environment to your preferences
 RUN echo 'alias l="ls -la --group-directories-first --color=auto"' >> ~/.bashrc && \
